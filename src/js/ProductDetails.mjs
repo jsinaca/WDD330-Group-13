@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, itemsInCart } from "./utils.mjs";
   
   export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -15,6 +15,7 @@ import { setLocalStorage, getLocalStorage } from "./utils.mjs";
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
         document.getElementById("addToCart")
           .addEventListener("click", this.addToCart.bind(this));
+        itemsInCart();
     }
 
     addToCart() {
@@ -22,6 +23,7 @@ import { setLocalStorage, getLocalStorage } from "./utils.mjs";
         if (!cartList) cartList = [];
         cartList.push(this.product);
         setLocalStorage("so-cart", cartList);
+        location.reload();
     }
 
     renderProductDetails () {

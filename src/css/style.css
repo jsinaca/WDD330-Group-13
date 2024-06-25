@@ -105,6 +105,7 @@ button {
 
 .cart svg {
   width: 25px;
+  overflow: visible;
 }
 .cart:hover svg {
   fill: gray;
@@ -169,7 +170,7 @@ button {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  grid-template-columns: 25% auto 15% 3%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -202,6 +203,26 @@ button {
   grid-column: 3;
 }
 
+.delete {
+  grid-row: 1;
+  grid-column: 4;
+  background-color: rgb(188, 42, 42);
+  border-radius: 5px;
+  align-self: center;
+  justify-self: center;
+  padding: .1em;
+  color: #ffffff;
+}
+
+.delete:hover {
+  background-color: rgb(181, 98, 98);
+  color: #030303;
+  cursor: pointer;
+}
+.cart-total {
+  display:none;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -212,7 +233,7 @@ button {
   }
   .cart-card {
     font-size: inherit;
-    grid-template-columns: 150px auto 15%;
+    grid-template-columns: 150px auto 15% 3%;
   }
 }
 

@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs"
+import { renderListWithTemplate, itemsInCart } from "./utils.mjs"
 
 function  productCardTemplate(product) {
     return `<li class="product-card">
@@ -28,11 +28,13 @@ export default class ProductListing {
     }
     renderList(getData) {
         renderListWithTemplate(productCardTemplate, this.listElement, getData);
+        itemsInCart();
         // var listOfProducts = `<ul class="product-list">`;
         // this.listElement.forEach(element => listOfProducts += productCardTemplate(element));
         // listOfProducts += `</ul>`
         // this.listElement.insertAdjacentHTML("after", listOfProducts.join(""));
     }
+
     refineList(listNeded, data) {
         var refineList =  [];
         data.forEach(element => {
