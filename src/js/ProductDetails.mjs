@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, itemsInCart } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, itemsInCart, loadHeaderFooter } from "./utils.mjs";
   
   export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -7,6 +7,7 @@ import { setLocalStorage, getLocalStorage, itemsInCart } from "./utils.mjs";
         this.dataSource = dataSource;
     }
     async init() {
+      loadHeaderFooter();
         this.product = await this.dataSource.findProductById(this.productId);
         await this.renderProductDetails();
         // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -15,6 +16,7 @@ import { setLocalStorage, getLocalStorage, itemsInCart } from "./utils.mjs";
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
         document.getElementById("addToCart")
           .addEventListener("click", this.addToCart.bind(this));
+        // loadHeaderFooter();
         itemsInCart();
     }
 

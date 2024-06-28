@@ -29,10 +29,6 @@ export default class ProductListing {
     renderList(getData) {
         renderListWithTemplate(productCardTemplate, this.listElement, getData);
         itemsInCart();
-        // var listOfProducts = `<ul class="product-list">`;
-        // this.listElement.forEach(element => listOfProducts += productCardTemplate(element));
-        // listOfProducts += `</ul>`
-        // this.listElement.insertAdjacentHTML("after", listOfProducts.join(""));
     }
 
     refineList(listNeded, data) {
