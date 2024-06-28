@@ -1,6 +1,7 @@
-import { getLocalStorage, setLocalStorage, itemsInCart } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, itemsInCart, loadHeaderFooter } from "./utils.mjs";
 
 function renderCartContents() {
+  loadHeaderFooter();
   const cartItems = getLocalStorage("so-cart");
   if (cartItems.length > 0) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
@@ -65,4 +66,5 @@ function deleteFromCart(item) {
   location.reload();
 }
 
+loadHeaderFooter();
 renderCartContents();

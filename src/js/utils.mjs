@@ -30,10 +30,6 @@ export function getParams(param) {
 }
 
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
-  // var listOfProducts = `<ul class="product-list">`;
-  // var listOfProducts = `<ul class="product-list">`;
-  // this.list.forEach(element => listOfProducts += templateFn(element));
-  // listOfProducts += `</ul>`
   const htmlStrings = list.map(templateFn);
   if (clear) {
     parentElement.innerHTML = "";
@@ -63,4 +59,27 @@ export function itemsInCart() {
     document.querySelector(".two-numbers").style.display = " none";
     new Error("Error reading cookies");
   }
+}
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data)
+  }
+}
+
+export async function loadHeaderFooter() {
+  const headerTemp = await loadTemplate("../partials/header.html");
+  const footerTemp = await loadTemplate("../partials/footer.html");
+  const header = document.querySelector("#main-header");
+  const footer = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerTemp, header);
+  renderWithTemplate(footerTemp, footer);
+}
+
+export async function loadTemplate(path) {
+  const html = await fetch(path);
+  const template = await html.text();
+  return template;
 }
