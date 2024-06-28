@@ -210,7 +210,7 @@ button {
   border-radius: 5px;
   align-self: center;
   justify-self: center;
-  padding: .1em;
+  padding: 0.1em;
   color: #ffffff;
 }
 
@@ -220,7 +220,7 @@ button {
   cursor: pointer;
 }
 .cart-total {
-  display:none;
+  display: none;
 }
 
 @media screen and (min-width: 500px) {
