@@ -224,14 +224,14 @@ button {
   display: none;
 }
 
-.category-list{
+.category-list {
   display: flex;
   list-style-type: none;
 }
-.category-list li a{ 
+.category-list li a {
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
   text-decoration: none;
   color: #030303;
   font-size: x-large;
