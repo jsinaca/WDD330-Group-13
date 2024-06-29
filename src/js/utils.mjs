@@ -52,7 +52,6 @@ export function itemsInCart() {
       display.style.display = "block";
       display.innerHTML = inCart.length;
     }
-    // location.reload(true);
   } catch {
     circle.style.display = "none";
     document.querySelector(".one-number").style.display = "none";

@@ -219,8 +219,27 @@ button {
   color: #030303;
   cursor: pointer;
 }
+
 .cart-total {
   display: none;
+}
+
+.category-list{
+  display: flex;
+  list-style-type: none;
+}
+.category-list li a{ 
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  text-decoration: none;
+  color: #030303;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.category-list img {
+  width: 80%;
 }
 
 @media screen and (min-width: 500px) {
