@@ -37,23 +37,27 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function itemsInCart() {
-  const inCart = getLocalStorage("so-cart");
-  const circle = document.querySelector(".circle");
+export function itemsInCart(inCart) {
+  // const inCart = getLocalStorage("so-cart");
+  const circle = document.querySelector(".circle-superscrip");
   try {
-    if (inCart.length > 0 && inCart.length < 10) {
+    if (inCart && inCart.length > 0 && inCart.length < 10) {
       circle.style.display = "block";
       var number = document.querySelector(".one-number");
       number.style.display = "block";
       number.innerHTML = inCart.length;
-    } else if (inCart.length >= 10) {
+    } else if (inCart && inCart.length >= 10) {
       circle.style.display = "block";
       var display = document.querySelector(".two-numbers");
       display.style.display = "block";
       display.innerHTML = inCart.length;
+    } else {
+      circle.style.display = "none";
+      document.querySelector(".one-number").style.display = "none";
+      document.querySelector(".two-numbers").style.display = " none";
     }
   } catch {
-    circle.style.display = "none";
+    document.querySelector(".circle-superscrip").style.display = "none";
     document.querySelector(".one-number").style.display = "none";
     document.querySelector(".two-numbers").style.display = " none";
     new Error("Error reading cookies");
@@ -73,7 +77,9 @@ export async function loadHeaderFooter() {
   const header = document.querySelector("#main-header");
   const footer = document.querySelector("#main-footer");
 
-  renderWithTemplate(headerTemp, header);
+  var localStorag = getLocalStorage("so-cart");
+  
+  renderWithTemplate(headerTemp, header, localStorag, itemsInCart);
   renderWithTemplate(footerTemp, footer);
 }
 

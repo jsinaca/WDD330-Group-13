@@ -1,4 +1,4 @@
-import { renderListWithTemplate, itemsInCart } from "./utils.mjs"
+import { renderListWithTemplate } from "./utils.mjs"
 
 function  productCardTemplate(product) {
     return `<li class="product-card">
@@ -22,12 +22,11 @@ export default class ProductListing {
     }
     async init() {
         const getData = await this.dataSource.getData(this.category);
-        document.querySelector(".top-products").textContent = `Top Products ${this.category[0].toUpperCase() + this.category.slice(1)}`;
+        document.querySelector(".top-products").textContent = `Top Products: ${this.category[0].toUpperCase() + this.category.slice(1)}`;
         this.renderList(getData);
     }
     renderList(getData) {
         renderListWithTemplate(productCardTemplate, this.listElement, getData);
-        itemsInCart();
     }
 
     refineList(listNeded, data) {
