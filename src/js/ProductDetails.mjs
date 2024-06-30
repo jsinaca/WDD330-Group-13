@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, itemsInCart, loadHeaderFooter } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, loadHeaderFooter } from "./utils.mjs";
   
   export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -17,7 +17,6 @@ import { setLocalStorage, getLocalStorage, itemsInCart, loadHeaderFooter } from 
         // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
         document.getElementById("addToCart")
           .addEventListener("click", this.addToCart.bind(this));
-        itemsInCart();
     }
 
     addToCart() {
@@ -34,7 +33,7 @@ import { setLocalStorage, getLocalStorage, itemsInCart, loadHeaderFooter } from 
 
         copyHTML.querySelector(".product-brand").textContent = this.product.Brand.Name;
         copyHTML.getElementById("NameWithoutBrand").textContent = this.product.NameWithoutBrand;
-        copyHTML.getElementById("image").src = this.product.Images.PrimaryLarge;
+        copyHTML.getElementById("image").src = this.product.Images.PrimaryExtraLarge;
         copyHTML.querySelector(".product-card__price").textContent = this.product.ListPrice;
         copyHTML.querySelector(".product__color").textContent = this.product.Colors[0].ColorName;
         copyHTML.querySelector(".product__description").innerHTML = this.product.DescriptionHtmlSimple;

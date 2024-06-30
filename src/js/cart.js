@@ -1,13 +1,12 @@
 import {
   getLocalStorage,
   setLocalStorage,
-  itemsInCart,
   loadHeaderFooter,
 } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
-  if (cartItems.length > 0) {
+  if (cartItems && cartItems.length > 0) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
     var items = document.querySelectorAll(".delete");
@@ -16,15 +15,15 @@ function renderCartContents() {
     const htmlItems = `<h3>The cart is Empty</h3>`;
     document.querySelector(".product-list").innerHTML = htmlItems;
   }
+  loadHeaderFooter();
   total(cartItems);
-  itemsInCart();
 }
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>
@@ -71,5 +70,4 @@ function deleteFromCart(item) {
   location.reload();
 }
 
-loadHeaderFooter();
 renderCartContents();
