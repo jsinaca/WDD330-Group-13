@@ -21,10 +21,28 @@ import { setLocalStorage, getLocalStorage, loadHeaderFooter } from "./utils.mjs"
 
     addToCart() {
         let cartList = getLocalStorage("so-cart");
+        var needsToBeAdded = true;
         if (!cartList) cartList = [];
-        cartList.push(this.product);
-        setLocalStorage("so-cart", cartList);
-        location.reload();
+        try {
+          if (cartList.length > 0) {
+            cartList.forEach(element => { if (element.Id === this.product.Id) {
+              const increment = parseInt(element.Qty) + 1;
+              element.Qty = String(increment);
+              needsToBeAdded = false;
+              return;
+            }
+          })}
+        if (needsToBeAdded){
+            this.product.Qty = "1";
+            cartList.push(this.product);
+        }
+          setLocalStorage("so-cart", cartList);
+          location.reload();
+
+        }
+        catch {
+           new Error ("Problem adding product to cart");
+        } 
     }
 
     renderProductDetails () {

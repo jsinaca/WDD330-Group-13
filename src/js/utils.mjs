@@ -38,23 +38,28 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 }
 
 export function itemsInCart(inCart) {
-  // const inCart = getLocalStorage("so-cart");
+  var totalItems = 0;
   const circle = document.querySelector(".circle-superscrip");
+  const one = document.querySelector(".one-number");
+  const two = document.querySelector(".two-numbers");
   try {
-    if (inCart && inCart.length > 0 && inCart.length < 10) {
+    for (let item of inCart) {
+      totalItems += parseInt(item.Qty)
+    }
+    if (inCart && totalItems > 0 && totalItems < 10) {
       circle.style.display = "block";
-      var number = document.querySelector(".one-number");
-      number.style.display = "block";
-      number.innerHTML = inCart.length;
-    } else if (inCart && inCart.length >= 10) {
+      two.style.display = "none";
+      one.style.display = "block";
+      one.innerHTML = totalItems;
+    } else if (inCart && totalItems >= 10) {
       circle.style.display = "block";
-      var display = document.querySelector(".two-numbers");
-      display.style.display = "block";
-      display.innerHTML = inCart.length;
+      one.style.display = "none";
+      two.style.display = "block";
+      two.innerHTML = totalItems;
     } else {
       circle.style.display = "none";
-      document.querySelector(".one-number").style.display = "none";
-      document.querySelector(".two-numbers").style.display = " none";
+      one.style.display = "none";
+      two.style.display = " none";
     }
   } catch {
     document.querySelector(".circle-superscrip").style.display = "none";
