@@ -73,7 +73,7 @@ function deleteFromCart(item) {
     if (item.target && inCart[element].Id == item.target.id) {
       index = element;
       break;
-    } else if (inCart[element].Id == item.id){
+    } else if (inCart[element].Id == item.id) {
       index = element;
       break;
     }
@@ -81,7 +81,6 @@ function deleteFromCart(item) {
   inCart.splice(index, 1);
   setLocalStorage("so-cart", inCart);
   location.reload();
-  // loadHeaderFooter();
 }
 
 function minus(id) {
@@ -92,14 +91,16 @@ function minus(id) {
   } else {
     id.target.nextElementSibling.value = nextSibling.toString();
     var data = getLocalStorage("so-cart");
-    data.forEach(element => {if (element.Id == id.target.dataset.id) {
-      element.Qty = String(parseInt(element.Qty) - 1);
-      // itemsInCart(data);
-      setLocalStorage("so-cart", data);
-      itemsInCart(data);
-      total(data);
-      return;
-    }})
+    data.forEach((element) => {
+      if (element.Id == id.target.dataset.id) {
+        element.Qty = String(parseInt(element.Qty) - 1);
+        // itemsInCart(data);
+        setLocalStorage("so-cart", data);
+        itemsInCart(data);
+        total(data);
+        return;
+      }
+    });
   }
 }
 
@@ -107,13 +108,15 @@ function plus(id) {
   var nextSibling = parseInt(id.target.previousElementSibling.value) + 1;
   id.target.previousElementSibling.value = nextSibling.toString();
   var data = getLocalStorage("so-cart");
-  data.forEach(element => {if (element.Id == id.target.dataset.id) {
-    element.Qty = String(parseInt(element.Qty) + 1);
-    setLocalStorage("so-cart", data);
-    itemsInCart(data);
-    total(data);
-    return;
-  }})
+  data.forEach((element) => {
+    if (element.Id == id.target.dataset.id) {
+      element.Qty = String(parseInt(element.Qty) + 1);
+      setLocalStorage("so-cart", data);
+      itemsInCart(data);
+      total(data);
+      return;
+    }
+  });
 }
 
 renderCartContents();

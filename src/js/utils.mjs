@@ -72,7 +72,7 @@ export function itemsInCart(inCart) {
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.insertAdjacentHTML("afterbegin", template);
   if (callback) {
-    callback(data)
+    callback(data);
   }
 }
 
