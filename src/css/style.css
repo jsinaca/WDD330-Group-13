@@ -81,11 +81,20 @@ header {
   color: var(--tertiary-color);
 }
 
-button {
+.checkout-btn {
+  width: 180px;
+  text-decoration: none;
+  margin: 1rem auto;
+  display: flex;
+}
+
+button,
+.checkout-btn {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
   color: white;
-  margin: auto;
+  margin: 1rem auto;
+  border-radius: 5px;
   display: block;
   border: 0;
   font-size: var(--large-font);
@@ -210,7 +219,6 @@ button {
   align-items: center;
   /* margin: 5%; */
   /* padding: 5%; */
-
 }
 
 .change-number p {
@@ -219,7 +227,8 @@ button {
   text-align: center;
 }
 
-span.minus, span.plus {
+span.minus,
+span.plus {
   background-color: #cbcbcb;
   padding: 3%;
   width: 40%;
@@ -229,7 +238,8 @@ span.minus, span.plus {
   text-align: center;
 }
 
-span.minus:hover, span.plus:hover {
+span.minus:hover,
+span.plus:hover {
   background-color: #e8e8e8;
   color: #303030ad;
 }
@@ -278,6 +288,54 @@ input {
 
 .category-list img {
   width: 80%;
+}
+
+/* Styles for checkout */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 4fr;
+  gap: 3%; */
+}
+.order-summary {
+  display: block;
+  position: absolute;
+  width:40%;
+  float: right;
+  left: 55%;
+  /* z-index:50; */
+  /* grid-column: 2 / 3;
+  grid-row: 1 ; */
+}
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: .5rem;
+}
+fieldset {
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px #30303091 ;
+}
+label {
+  font-size: medium;
+}
+.checkout-btn {
+  
+}
+fieldset input {
+  border: #03030367 1px solid;
+  border-radius: 5px;
+  margin-bottom: .5rem;
+  padding: .25rem;
+  text-align: start;
+}
+
+fieldset input:focus:invalid {
+  border: red;
 }
 
 @media screen and (min-width: 500px) {
