@@ -369,7 +369,7 @@ fieldset input:focus:invalid {
   color: #030303c8;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (max-width: 720px) {
   body {
     max-width: 1080px;
     margin: auto;
