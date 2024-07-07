@@ -369,7 +369,7 @@ fieldset input:focus:invalid {
   color: #030303c8;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 400px) {
   body {
     max-width: 1080px;
     margin: auto;
@@ -379,7 +379,56 @@ fieldset input:focus:invalid {
   }
   .cart-card {
     font-size: inherit;
-    grid-template-columns: 150px auto 15% 5%;
+    grid-template-columns: 150px auto 5%;
+  }
+  .card__name {
+    grid-row: 2/3;
+  }
+  .cart-card__color {
+    grid-row: 2/3;
+  }
+  .change-number {
+    grid-row: 3/4;
+    grid-column: 1/2;
+  }
+  .cart-card__price {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    /* margin: 1rem 1rem; */
+  }
+  .cart-card p {
+    margin: 1rem;
+
+  }
+  .delete {
+    grid-row: 1;
+    grid-column: 3;
+    margin-top: 1rem;
+  }
+  .category-list {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cart-card.divider {
+    margin-top: 1rem;
+  }
+  form {
+    flex-wrap: wrap;
+    width: 95%;
+  }
+  .order-summary {
+    display: block;
+    position:relative;
+    width:100%;
+    float: none;
+    left: 0%;
+  }
+  input {
+    width: 100%;
+    font-size: larger;
+  }
+  label {
+    font-size: larger;
   }
 }
 
