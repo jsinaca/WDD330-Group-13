@@ -30,6 +30,7 @@ export default class CheckoutProcess {
       this.calculateSubTotal();
       displaySubTotal.innerHTML += `${this.subtotal.toFixed(2)}`;
       this.items = packageItems();
+      this.totalItems();
     }
     calculateSubTotal() {
       const cartItems = getLocalStorage("so-cart");
@@ -78,7 +79,7 @@ export default class CheckoutProcess {
         // const temp = convertToJson(convertedJSON);
         new Error(e)
       }
-  }
+    }
 }
 
 // http://wdd330-backend.onrender.com/checkout
