@@ -50,6 +50,8 @@ export default class CheckoutProcess {
       this.tax = this.subtotal * .06;
       this.total = this.subtotal + this.tax + this.shipping;
       this.displayTotal()
+      document.querySelector(".estimate").innerHTML = `Shipping: ${this.shipping.toFixed(2)}`; 
+      document.querySelector(".tax").innerHTML = `Tax: ${this.tax.toFixed(2)}`; 
     }
     displayTotal() {
       var displayTotal = document.querySelector(".total");
