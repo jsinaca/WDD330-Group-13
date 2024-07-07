@@ -1,11 +1,10 @@
-const baseURL = import.meta.env.VITE_SERVER_URL;
 import ExternalServices from "./ExternalServices.mjs";
-import { getLocalStorage, itemsInCart } from "./utils.mjs";
+import { getLocalStorage } from "./utils.mjs";
 
 function packageItems() {
   const items = [];
   const cartItems = getLocalStorage("so-cart");
-  if (cartItems.length > 0) {
+  if (cartItems && cartItems.length > 0) {
     cartItems.forEach((element) => {
       items.push({
         id: element.Id, 
@@ -34,14 +33,14 @@ export default class CheckoutProcess {
     }
     calculateSubTotal() {
       const cartItems = getLocalStorage("so-cart");
-      if (cartItems.length > 0) {
+      if (cartItems && cartItems.length > 0) {
         cartItems.forEach((element) => {
           this.subtotal += element.FinalPrice * element.Qty;
       })}
     }
     totalItems() {
       const cartItems = getLocalStorage("so-cart");
-      if (cartItems.length > 0) {
+      if (cartItems && cartItems.length > 0) {
         cartItems.forEach((element) => {
           this.qty += parseInt(element.Qty);
       })}
@@ -74,8 +73,8 @@ export default class CheckoutProcess {
         const res = await services.checkout(convertedJSON);
         // console.log(res);
       } catch (e){
-        new Error(e);
-          // console.error(e);
+        // const temp = convertToJson(convertedJSON);
+        new Error(e)
       }
   }
 }

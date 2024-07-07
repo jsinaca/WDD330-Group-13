@@ -338,6 +338,37 @@ fieldset input:focus:invalid {
   border: red;
 }
 
+.alert {
+  background-color: #f0a768dc;
+  display: flex;
+  justify-content: space-between;
+  /* justify-items: end; */
+  margin: 1% 1%;
+  padding: 3px 1%;
+  font-size:smaller;
+  font-weight: bold;
+}
+
+.alert span {
+  height: 100%;
+  padding: 2px;
+  margin: 2px;
+  border-radius: 2px;
+}
+.alert span:hover {
+  cursor: pointer;
+  color:#ffffff;
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 2px;
+}
+.alert p {
+  margin: 1%;
+  color: #030303c8;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
