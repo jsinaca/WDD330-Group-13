@@ -49,7 +49,13 @@ header {
 }
 .hero {
   position: relative;
+  /* padding: center; */
 }
+.hero>img {
+  margin: auto;
+  width: 100%;
+}
+
 .hero .logo {
   position: absolute;
   left: calc(50% - 60px);
@@ -133,6 +139,7 @@ button,
   padding: 0.5em;
 }
 .product-list {
+  /* width: 100%; */
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -178,6 +185,7 @@ button,
 
 /* Start cart list card styles */
 .cart-card {
+  width: 100%;
   display: grid;
   grid-template-columns: 25% auto 15% 5%;
   font-size: var(--small-font);
@@ -275,6 +283,7 @@ input {
 .category-list {
   display: flex;
   list-style-type: none;
+  justify-content: center;
 }
 .category-list li a {
   display: flex;
