@@ -10,7 +10,16 @@ document
   .querySelector("#zip")
   .addEventListener("blur", checkout.calculateTotal.bind(checkout));
 
-document.querySelector(".checkout-btn").addEventListener("click", (event) => {
+document.querySelector(".checkout-btn").addEventListener("click", (event) => { 
   event.preventDefault();
-  checkout.checkout();
+  const myForm = document.forms[0];
+  const test = myForm.reportValidity();
+
+  const chkStatus = myForm.checkValidity();
+  if (chkStatus) {
+    checkout.checkout();
+    var currentLocation = location;
+    location.replace(currentLocation + "success.html");
+    localStorage.clear("so-cart");
+  }
 });

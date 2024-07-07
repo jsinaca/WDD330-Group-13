@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, loadHeaderFooter, alertMessage, itemsInCart } from "./utils.mjs";
   
   export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -37,8 +37,8 @@ import { setLocalStorage, getLocalStorage, loadHeaderFooter } from "./utils.mjs"
             cartList.push(this.product);
         }
           setLocalStorage("so-cart", cartList);
-          location.reload();
-
+          alertMessage(`${this.product.NameWithoutBrand} added to cart!`);
+          itemsInCart(getLocalStorage("so-cart"));
         }
         catch {
            new Error ("Problem adding product to cart");
