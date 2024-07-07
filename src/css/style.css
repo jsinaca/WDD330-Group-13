@@ -303,7 +303,7 @@ form {
 .order-summary {
   display: block;
   position: absolute;
-  width:40%;
+  width:20%;
   float: right;
   left: 55%;
   /* z-index:50; */
