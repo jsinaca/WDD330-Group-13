@@ -16,12 +16,13 @@ function renderCartContents() {
     decrease.forEach((item) => item.addEventListener("click", minus));
     var increase = document.querySelectorAll(".plus");
     increase.forEach((item) => item.addEventListener("click", plus));
+    total(cartItems);
   } else {
-    const htmlItems = `<h3>The cart is Empty</h3>`;
-    document.querySelector(".product-list").innerHTML = htmlItems;
+      const htmlItems = `<h3>The cart is Empty</h3>`;
+      document.querySelector(".product-list").innerHTML = htmlItems;
+      document.querySelector(".checkout-btn").style.display = "none";
   }
   loadHeaderFooter();
-  total(cartItems);
 }
 
 function cartItemTemplate(item) {
@@ -94,7 +95,6 @@ function minus(id) {
     data.forEach((element) => {
       if (element.Id == id.target.dataset.id) {
         element.Qty = String(parseInt(element.Qty) - 1);
-        // itemsInCart(data);
         setLocalStorage("so-cart", data);
         itemsInCart(data);
         total(data);
