@@ -237,7 +237,7 @@ button,
 
 span.minus,
 span.plus {
-  background-color: #cbcbcb;
+  background-color: var(--light-grey);
   padding: 3%;
   width: 40%;
   height: 100%;
@@ -249,7 +249,7 @@ span.plus {
 span.minus:hover,
 span.plus:hover {
   background-color: #e8e8e8;
-  color: #303030ad;
+  color: var(--dark-grey);
 }
 
 input {
@@ -266,7 +266,7 @@ input {
   align-self: baseline;
   justify-self: end;
   padding: 0.1em;
-  color: #ffffff;
+  color: var(--dark-grey);
   text-align: center;
 }
 
@@ -304,10 +304,6 @@ form {
   display: flex;
   flex-direction: column;
   width: 50%;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 4fr;
-  gap: 3%; */
 }
 .order-summary {
   display: block;
@@ -315,9 +311,6 @@ form {
   width:20%;
   float: right;
   left: 55%;
-  /* z-index:50; */
-  /* grid-column: 2 / 3;
-  grid-row: 1 ; */
 }
 form fieldset {
   display: flex;
@@ -332,9 +325,9 @@ fieldset {
 label {
   font-size: medium;
 }
-.checkout-btn {
+/* .checkout-btn {
   
-}
+} */
 fieldset input {
   border: #03030367 1px solid;
   border-radius: 5px;
@@ -348,10 +341,9 @@ fieldset input:focus:invalid {
 }
 
 .alert {
-  background-color: #f0a768dc;
+  background-color: var(--primary-color);
   display: flex;
   justify-content: space-between;
-  /* justify-items: end; */
   margin: 1% 1%;
   padding: 3px 1%;
   font-size:smaller;
@@ -444,4 +436,32 @@ fieldset input:focus:invalid {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+.num-items {
+  font-size: 14px;
+  font-weight:bold;
+  padding: 2px;
+  background-color: var(--primary-color);
+  color: rgba(0, 0, 0, 0.841);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+.displaycontainerNumber {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  left: 6px;
+}
+
+.animaNum {
+  animation-name: myAnimation;
+  animation-duration: 2s;
+  animation-fill-mode: forwards
+}
+
+@keyframes myAnimation {
+  50% {width: 25px; height: 25px; font-size: 20px; font-weight: bolder;}
 }
