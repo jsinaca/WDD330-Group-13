@@ -7,7 +7,7 @@ import { setLocalStorage, getLocalStorage, loadHeaderFooter, alertMessage, items
         this.dataSource = dataSource;
     }
     async init() {
-      loadHeaderFooter();
+      loadHeaderFooter(false);
         this.product = await this.dataSource.findProductById(this.productId);
         await this.renderProductDetails(this.product);
         // document.querySelector(".top-products").textContent = `Top Pproducts${}`;
@@ -38,7 +38,7 @@ import { setLocalStorage, getLocalStorage, loadHeaderFooter, alertMessage, items
         }
           setLocalStorage("so-cart", cartList);
           alertMessage(`${this.product.NameWithoutBrand} added to cart!`);
-          itemsInCart(getLocalStorage("so-cart"));
+          itemsInCart(cartList);
         }
         catch {
            new Error ("Problem adding product to cart");

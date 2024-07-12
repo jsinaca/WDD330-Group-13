@@ -38,6 +38,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 }
 
 export function itemsInCart(inCart) {
+  // const inCart = getLocalStorage("so-cart");
   var totalItems = 0;
   const displayNum = document.querySelector(".num-items");
   try {
@@ -45,12 +46,13 @@ export function itemsInCart(inCart) {
       totalItems += parseInt(item.Qty)
     }
     if (inCart && totalItems > 0) {
-      displayNum.innerHTML = totalItems;
       displayNum.style.display = "inline-block";
+      displayNum.innerHTML = totalItems;
       displayNum.classList.add("animaNum");
       setTimeout(() => {displayNum.classList.remove("animaNum")}, 2000);
     } else {
       displayNum.parentElement.style.display = "none";
+      displayNum.style.display = "none";
     }
   } catch {
     displayNum.parentElement.style.display = "none";
@@ -60,12 +62,15 @@ export function itemsInCart(inCart) {
 
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.insertAdjacentHTML("afterbegin", template);
-  if (callback) {
-    callback(data);
-  }
+  
+    if (callback) {
+      callback(data);
+    } else {
+      document.querySelector(".displaycontainerNumber").classList.add("hide");
+    }
 }
 
-export async function loadHeaderFooter() {
+export async function loadHeaderFooter(load = true) {
   const headerTemp = await loadTemplate("../partials/header.html");
   const footerTemp = await loadTemplate("../partials/footer.html");
   const header = document.querySelector("#main-header");
@@ -73,7 +78,11 @@ export async function loadHeaderFooter() {
 
   var localStorag = getLocalStorage("so-cart");
   
-  renderWithTemplate(headerTemp, header, localStorag, itemsInCart);
+  if (load) {
+    renderWithTemplate(headerTemp, header, localStorag, itemsInCart, load);
+  } else {
+    renderWithTemplate(headerTemp, header, localStorag);
+  }
   renderWithTemplate(footerTemp, footer);
 }
 
