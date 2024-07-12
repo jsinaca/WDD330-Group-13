@@ -455,6 +455,9 @@ footer {
   top: 5px;
   left: 6px;
 }
+#hide {
+  display: none;
+}
 
 .animaNum {
   animation-name: myAnimation;
