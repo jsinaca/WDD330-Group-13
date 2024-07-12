@@ -60,6 +60,7 @@ function total(cartItems) {
       });
       displayTotal.innerHTML = `<b>Total</b>: $${finalPrice.toFixed(2)}`;
       displayTotal.style.display = "block";
+      // itemsInCart();
     }
   } catch {
     displayTotal.style.display = "none";

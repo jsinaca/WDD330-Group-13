@@ -39,32 +39,21 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 
 export function itemsInCart(inCart) {
   var totalItems = 0;
-  const circle = document.querySelector(".circle-superscrip");
-  const one = document.querySelector(".one-number");
-  const two = document.querySelector(".two-numbers");
+  const displayNum = document.querySelector(".num-items");
   try {
     for (let item of inCart) {
       totalItems += parseInt(item.Qty)
     }
-    if (inCart && totalItems > 0 && totalItems < 10) {
-      circle.style.display = "block";
-      two.style.display = "none";
-      one.style.display = "block";
-      one.innerHTML = totalItems;
-    } else if (inCart && totalItems >= 10) {
-      circle.style.display = "block";
-      one.style.display = "none";
-      two.style.display = "block";
-      two.innerHTML = totalItems;
+    if (inCart && totalItems > 0) {
+      displayNum.innerHTML = totalItems;
+      displayNum.style.display = "inline-block";
+      displayNum.classList.add("animaNum");
+      setTimeout(() => {displayNum.classList.remove("animaNum")}, 2000);
     } else {
-      circle.style.display = "none";
-      one.style.display = "none";
-      two.style.display = " none";
+      displayNum.parentElement.style.display = "none";
     }
   } catch {
-    document.querySelector(".circle-superscrip").style.display = "none";
-    document.querySelector(".one-number").style.display = "none";
-    document.querySelector(".two-numbers").style.display = " none";
+    displayNum.parentElement.style.display = "none";
     new Error("Error reading cookies");
   }
 }
