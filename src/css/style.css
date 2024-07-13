@@ -455,7 +455,7 @@ footer {
   top: 5px;
   left: 6px;
 }
-#hide {
+.hide {
   display: none;
 }
 
